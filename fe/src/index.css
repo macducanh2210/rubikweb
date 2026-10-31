@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --page: #EDEEF0;
+  --surface: #FFFFFF;
+  --text: #15161A;
+  --muted: #5B5F69;
+  --line: #D4D6DB;
+  --control-border: #747983;
+  --link: #0046AD;
+  --focus: #0046AD;
+  --quiet: #E4E6EA;
+  --empty-sticker: #D4D6DB;
+  --danger-text: #B71234;
+  --scrim: rgb(21 22 26 / 60%);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #121316;
+  --surface: #1B1D21;
+  --text: #ECEDEF;
+  --muted: #9A9EA8;
+  --line: #2C2F35;
+  --control-border: #858B96;
+  --link: #5B8FE8;
+  --focus: #5B8FE8;
+  --quiet: #2C2F35;
+  --empty-sticker: #41454D;
+  --danger-text: #FF738B;
+  --scrim: rgb(0 0 0 / 70%);
+}
+
+:root,
+[data-theme] {
+  --action: #0046AD;
+  --danger: #B71234;
+  --success: #009B48;
+  --warning: #FF5800;
+  --current-step: #FFD500;
+  --sticker-white: #F5F5F0;
+  --sticker-blue: #0046AD;
+  --sticker-green: #009B48;
+  --sticker-red: #B71234;
+  --sticker-orange: #FF5800;
+  --sticker-yellow: #FFD500;
+  --on-action: #FFFFFF;
+  --on-danger: #FFFFFF;
+  --on-bright: #15161A;
+  --sticker-outline: #747983;
+  --radius-sticker-token: 3px;
+  --radius-control-token: 6px;
+  --radius-panel-token: 10px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+}
+
+@theme inline {
+  --spacing: var(--space-1);
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-control-border: var(--control-border);
+  --color-link: var(--link);
+  --color-focus: var(--focus);
+  --color-quiet: var(--quiet);
+  --color-action: var(--action);
+  --color-danger: var(--danger);
+  --color-danger-text: var(--danger-text);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-current-step: var(--current-step);
+  --color-on-action: var(--on-action);
+  --color-on-danger: var(--on-danger);
+  --color-on-bright: var(--on-bright);
+  --font-sans: "Be Vietnam Pro", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius-sticker: var(--radius-sticker-token);
+  --radius-control: var(--radius-control-token);
+  --radius-panel: var(--radius-panel-token);
+  --text-caption: 12px;
+  --text-small: 14px;
+  --text-body: 16px;
+  --text-section: 20px;
+  --text-title: 28px;
+  --text-display: 40px;
+}
+
+html {
+  background: var(--page);
+  font-family: "Be Vietnam Pro", sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+dialog::backdrop {
+  background: var(--scrim);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+.sticker[data-color="white"] { background: var(--sticker-white); }
+.sticker[data-color="blue"] { background: var(--sticker-blue); }
+.sticker[data-color="green"] { background: var(--sticker-green); }
+.sticker[data-color="red"] { background: var(--sticker-red); }
+.sticker[data-color="orange"] { background: var(--sticker-orange); }
+.sticker[data-color="yellow"] { background: var(--sticker-yellow); }
+.sticker[data-color="empty"] { background: var(--empty-sticker); }
+
+.cube-model-scene {
+  display: grid;
+  place-items: center;
+  width: 240px;
+  height: 240px;
+  perspective: 700px;
+}
+
+.cube-model {
+  position: relative;
+  width: 138px;
+  height: 138px;
+  transform-style: preserve-3d;
+  transform: rotateX(-28deg) rotateY(-34deg);
+}
+
+.cube-model-face {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  width: 138px;
+  height: 138px;
+  padding: 3px;
+  border: 2px solid var(--on-bright);
+  background: var(--on-bright);
+  backface-visibility: hidden;
+}
+
+.cube-model-face-front { transform: translateZ(69px); }
+.cube-model-face-right { transform: rotateY(90deg) translateZ(69px); }
+.cube-model-face-top { transform: rotateX(90deg) translateZ(69px); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

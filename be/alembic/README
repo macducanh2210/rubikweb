@@ -1,0 +1,3 @@
+Alembic migration environment for the Rubik backend.
+
+The database URL is loaded from DATABASE_URL through app.core.config.
